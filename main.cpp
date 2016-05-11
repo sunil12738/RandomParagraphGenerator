@@ -3,7 +3,7 @@
 #include <string>
 #include <math.h>
 #include <stdlib.h>
-#define total 11
+#define total 10000
 #define null "0"
 using namespace std;
 int main(){
@@ -19,6 +19,10 @@ int main(){
 		++i;
 		// scanf("%s",word);
 	}
+
+	int total_word_count = i;
+	printf("total word count: %d\n", total_word_count);
+	printf("Please wait getting the unique word count and doing other important calculations\n");
 
 	//get the unique list of words
 	string unique[total];
@@ -36,22 +40,25 @@ int main(){
 		else{
 			unique[k]=list[i];
 			++k;
-			printf("%d\n",k);
+			// printf("%d\n",k);
 		}
 	}
 	int word_length=k-1;
 
-	//print the sting for testing
-	for(i=0;i<total;++i){
-		cout << list[i];
-		cout << '\n';
-	}
+	int unique_word_count = word_length;
+	printf("total unique word count: %d\n", unique_word_count);
 
-	printf("Unique word list\n");
-	for(i=0;i<total;++i){
-		cout << unique[i];
-		cout << '\n';
-	}
+	//print the sting for testing
+	// for(i=0;i<total;++i){
+	// 	cout << list[i];
+	// 	cout << '\n';
+	// }
+
+	// printf("Unique word list\n");
+	// for(i=0;i<total;++i){
+	// 	cout << unique[i];
+	// 	cout << '\n';
+	// }
 
 	int mat[word_length][word_length];
 	for(i=0;i<word_length;++i){
@@ -75,33 +82,36 @@ int main(){
 		mat[left_index][top_index]=1;
 	}
 
-	for(i=0;i<word_length;++i){
-		for(j=0;j<word_length;++j){
-			printf("%d \t ", mat[i][j]);
-		}
-		printf("\n");
-	}
+	//print the table
+	// for(i=0;i<word_length;++i){
+	// 	for(j=0;j<word_length;++j){
+	// 		printf("%d, \t ", mat[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
 
-	for(i=0;i<word_length;++i){
+	for(i=0;i<word_length-1;++i){
 		printf("%d ", i+1);
 		cout << unique[i]+'\n';
 	}
+	printf("Enter the unique index from which you want to start the paragraph: ");
 	int num;
 	scanf("%d",&num);
 	num=num-1;
-	cout << unique[num];
+	cout << unique[num] + " ";
 
 	//print the paragraph
-	printf("\n");
 	string init_word = unique[num];
-	for(i=0;i<total;++i){
+	int temp=0;
+	for(i=0;i<total_word_count;++i){
 		while(1){
 			int x = rand()%word_length;
+			// printf("%d ",x);
 			if(mat[num][x]==1) {
-				printf("%d\n",x);
 				num = x;
-				printf("\n");
 				cout << unique[num];
+				printf(" ");
+				++temp;
 				break;
 			}
 			else ;
