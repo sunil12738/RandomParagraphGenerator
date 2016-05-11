@@ -17,6 +17,7 @@ int main(){
 		list[i]=word;
 		initial[i]=word;
 		++i;
+		printf("%d\n", i);
 		// scanf("%s",word);
 	}
 
@@ -94,6 +95,10 @@ int main(){
 		printf("%d ", i+1);
 		cout << unique[i]+'\n';
 	}
+	int final_words;
+	printf("Enter the number of words in the result: ");
+	scanf("%d",&final_words);
+
 	printf("Enter the unique index from which you want to start the paragraph: ");
 	int num;
 	scanf("%d",&num);
@@ -103,10 +108,13 @@ int main(){
 	//print the paragraph
 	string init_word = unique[num];
 	int temp=0;
-	for(i=0;i<total_word_count;++i){
+	for(i=0;i<final_words;++i){
 		while(1){
 			int x = rand()%word_length;
-			// printf("%d ",x);
+			// printf("%d %d %d\n",x,word_length,num);
+			if(num == word_length-1 || num == word_length-2){
+				num = rand()%word_length-2;
+			}
 			if(mat[num][x]==1) {
 				num = x;
 				cout << unique[num];
